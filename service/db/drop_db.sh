@@ -1,0 +1,2 @@
+dropuser nfw
+dropdb nfw

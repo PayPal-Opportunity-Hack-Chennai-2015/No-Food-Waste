@@ -50,3 +50,6 @@ out
 *.tmp
 *.bak
 tmp/**
+
+# maven files
+**/target/*
