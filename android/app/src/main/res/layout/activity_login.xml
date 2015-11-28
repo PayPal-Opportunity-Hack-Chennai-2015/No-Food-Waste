@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:hint="Enter your name"
         android:layout_margin="10dp"
+        android:typeface="serif"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/edt_phone"
@@ -28,7 +29,19 @@
         android:maxLength="10"
         android:inputType="phone"
         android:hint="Enter mobile number"
+        android:typeface="serif"
         android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chk_is_volunteer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:layout_margin="10dp"
+            android:typeface="serif"
+            android:textSize="16dp"
+            android:text="@string/accept_as_volunteer"
+            />
 
         <Button
             style="@style/StyleBtn"

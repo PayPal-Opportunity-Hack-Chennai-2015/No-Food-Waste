@@ -1,4 +1,4 @@
-package com.food.nofoodwaste;
+package com.food.nofoodwaste.actvities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.food.nofoodwaste.R;
 
 public class DashBoardActivity extends AppCompatActivity {
 
@@ -37,7 +39,6 @@ public class DashBoardActivity extends AppCompatActivity {
                 mapLocationBtnClick();
             }
         });
-
 
     }
 
@@ -79,7 +80,7 @@ public class DashBoardActivity extends AppCompatActivity {
 
         if (name.length() > 3){
             isSuccess = false;
-        }else if(!mobile.matches(Helpers.REG_EXP_MOBILE)){
+        }else if(!mobile.matches(MyConstants.REG_EXP_MOBILE)){
             isSuccess = false;
         }
         return isSuccess;
