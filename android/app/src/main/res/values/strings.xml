@@ -6,11 +6,15 @@
 
     <string name="home">Home</string>
 
+    <string name="accept_as_volunteer">I wolud like to volunteer for delivering food and receive notifications about food donation</string>
+
+    <string name="select_available_donation_message">Please select the location you would like to pick up the donate food from</string>
+
     <string name="donate_food">Donate Food</string>
     <string name="volunteer">Volunteer</string>
     <string name="map_a_location">Map a Location</string>
 
-    <string name="banner_msg">Our goal is to Stop Food Waste!</string>
+    <string name="banner_msg">Our goal is to Stop Food Wastage!</string>
 
     <string name="valid_name">Please enter valid name</string>
     <string name="valid_mobile">Please enter valid mobile number</string>

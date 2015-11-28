@@ -1,17 +1,27 @@
-package com.food.nofoodwaste;
+package com.food.nofoodwaste.actvities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.food.nofoodwaste.utils.AppSharedPreferences;
+import com.food.nofoodwaste.utils.MyConstants;
+import com.food.nofoodwaste.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText edtName,edtPhone;
+    private boolean isVolunteer;
+    private AppCompatCheckBox chkIsVolunteer;
+    private String name,mobile;
+    AppSharedPreferences appSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,25 +29,46 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         initView();
 
+        appSharedPreferences = new AppSharedPreferences(getApplicationContext());
+
         findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doLogin();
             }
         });
+
+        chkIsVolunteer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    isVolunteer = true;
+                }else{
+                    isVolunteer = true;
+                }
+            }
+        });
     }
 
     private void doLogin() {
-        String name = edtName.getText().toString().trim();
-        String mobile = edtPhone.getText().toString().trim();
-        if (isValidationSuccess(name,mobile)){
-            doLoginTask(name,mobile);
+        name = edtName.getText().toString().trim();
+        mobile = edtPhone.getText().toString().trim();
+        if (isValidationSuccess()){
+            doLoginTask();
+            savePreferences();
         }else {
             //displayToast();
         }
     }
 
-    private void doLoginTask(String name, String mobile) {
+    private void savePreferences() {
+        appSharedPreferences.saveStringPreferences(MyConstants.PREF_KEY_NAME,name);
+        appSharedPreferences.saveStringPreferences(MyConstants.PREF_KEY_MOBILE,mobile);
+        appSharedPreferences.saveBooleanPreferences(MyConstants.PREF_KEY_IS_VOLUNTEER, isVolunteer);
+        appSharedPreferences.saveBooleanPreferences(MyConstants.PREF_KEY_IS_LOGGEDIN, true);
+    }
+
+    private void doLoginTask() {
         Intent intent = new Intent(getApplicationContext(),DashBoardActivity.class);
         startActivity(intent);
     }
@@ -46,13 +77,13 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),toastMsg,Toast.LENGTH_SHORT).show();
     }
 
-    private boolean isValidationSuccess(String name, String mobile) {
+    private boolean isValidationSuccess() {
         boolean isSuccess = true;
 
         if (name.length() < 3){
             displayToast(getString(R.string.valid_name));
             isSuccess = false;
-        }else if(!mobile.matches(Helpers.REG_EXP_MOBILE)){
+        }else if(!mobile.matches(MyConstants.REG_EXP_MOBILE)){
             displayToast(getString(R.string.valid_mobile));
             isSuccess = false;
         }
@@ -62,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
     private void initView() {
         edtName = (EditText)findViewById(R.id.edt_name);
         edtPhone = (EditText)findViewById(R.id.edt_phone);
+
+        chkIsVolunteer = (AppCompatCheckBox)findViewById(R.id.chk_is_volunteer);
     }
 
     @Override
