@@ -12,10 +12,20 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var volunteer: UISwitch!
+    
+    var userDefault: NSUserDefaults?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // check if already register
+        userDefault = NSUserDefaults(suiteName: "register")
+        
+        if let _ = userDefault?.objectForKey("phone") {
+            performSegueWithIdentifier("mainSegue", sender: self)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,10 +33,25 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     // MARK:- Login Action
 
     @IBAction func login(sender: AnyObject) {
         // service call
+        
+        if let phone = phoneTextField.text {
+            
+            let name = nameTextField.text
+            
+            userDefault?.setValue(phone, forKey: "phone")
+            userDefault?.setValue(name, forKey: "name")
+            
+            let serviceMgr = ServiceManager()
+            serviceMgr.createUser(name!, phone: phone, isVolunteer: volunteer.on)
+        }
     }
     
     func applyStyle() {
@@ -36,7 +61,5 @@ class LoginViewController: UIViewController {
         nameTextField.textColor = UIColor.whiteColor()
         
     }
-    
-
 }
 
