@@ -6,20 +6,20 @@ server:
     - type: http
       port: 7001
 database:
-#  driverClass: org.postgresql.Driver
-  driverClass: org.h2.Driver
-#  user: nfw
-#  password: nfw
-#  url: jdbc:postgresql://localhost/nfw
+  driverClass: org.postgresql.Driver
+#  driverClass: org.h2.Driver
+  user: nfw
+  password: nfw
+  url: jdbc:postgresql://localhost/nfw
 
-  user: sa
-  password: sa
-  url: jdbc:h2:./target/nfw
+#  user: sa
+#  password: sa
+#  url: jdbc:h2:./target/nfw
 
   properties:
     charSet: UTF-8
-#    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate.dialect: org.hibernate.dialect.H2Dialect
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate.dialect: org.hibernate.dialect.H2Dialect
     hibernate.hbm2ddl.auto: create
     hibernate.show_sql: true
     hibernate.format_sql: true
