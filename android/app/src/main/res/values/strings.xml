@@ -6,6 +6,8 @@
 
     <string name="home">Dashboard</string>
 
+    <string name="google_api_key">AIzaSyC-yNXRZTkMBzAQ8A_gNfTzi1tTGRYitgM</string>
+
     <string name="accept_as_volunteer">I wolud like to volunteer for delivering food and receive notifications about food donation</string>
 
     <string name="select_available_donation_message">Please select the location you would like to pick up the donate food from</string>
