@@ -1,4 +1,4 @@
-package com.nfw.service.models;
+package com.nfw.service.apis.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DonateFoodRequest {
-
+    private String donorMobile;
     private String foodType;
     private String quantity;
     private String latitude;

@@ -1,4 +1,4 @@
-package com.nfw.service.models;
+package com.nfw.service.apis.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRequest {
-
     private String username;
     private String mobileNumber;
     private String isVolunteer;

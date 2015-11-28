@@ -1,16 +1,12 @@
 package com.nfw.service.repo;
 
-import com.nfw.service.models.User;
+import com.nfw.service.model.User;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-/**
- * Created by sriram on 28/11/15.
- */
 public class UserDAO extends AbstractDAO<User> {
-
     public UserDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
@@ -26,5 +22,4 @@ public class UserDAO extends AbstractDAO<User> {
     public List<User> findAll() {
         return list(namedQuery("findAll"));
     }
-
 }

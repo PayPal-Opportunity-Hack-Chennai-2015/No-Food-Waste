@@ -8,13 +8,9 @@ import javax.ws.rs.core.Response;
 
 import static javax.ws.rs.core.Response.Status.OK;
 
-/**
- * Created by sriram on 28/11/15.
- */
 @Path("/hello")
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloEndpoint {
-
     @GET
     public Response helloUser() {
         return Response.status(OK).build();
