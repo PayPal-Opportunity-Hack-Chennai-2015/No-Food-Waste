@@ -51,7 +51,9 @@ public class UserEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User createUser(UserRequest userRequest) {
-        User user = new User(counter.incrementAndGet(), userRequest.getUsername(), userRequest.getMobileNumber());
+        User user = new User();
+        user.setUsername(userRequest.getUsername());
+        user.setMobileNumber(userRequest.getMobileNumber());
         System.out.println(user);
         dao.create(user);
         response.setStatus(CREATED.getStatusCode());

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -21,7 +22,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "user_nfw")
 /*@NamedQueries({
         @NamedQuery(name = "findAll", query = "SELECT u from User u")
 })*/
@@ -37,5 +38,6 @@ public class User {
 
     @JsonProperty
     private String mobileNumber;
+
 
 }
