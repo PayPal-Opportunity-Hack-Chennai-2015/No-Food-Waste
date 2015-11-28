@@ -42,5 +42,11 @@
     <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
         <!--<item name="android:background">@color/primary</item>-->
     </style>
+    
+    <style name="StyleBtn">
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:background">@drawable/btn_bg</item>
+        <item name="android:typeface">serif</item>
+    </style>
 
 </resources>

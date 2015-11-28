@@ -9,25 +9,54 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
+public class DashBoardActivity extends AppCompatActivity {
 
     private EditText edtName,edtPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        initView();
+        setContentView(R.layout.activity_dash_board);
+        //initView();
 
-        findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.layout_donate_food).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doLogin();
+                donationBtnClick();
             }
         });
+        findViewById(R.id.layout_volunteer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                volunteerBtnClick();
+            }
+        });
+        findViewById(R.id.layout_map_a_location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mapLocationBtnClick();
+            }
+        });
+
+
     }
 
-    private void doLogin() {
+    private void donationBtnClick(){
+        //Intent intent = new Intent(getApplicationContext(),DashBoardActivity.class);
+        //startActivity(intent);
+    }
+
+    private void volunteerBtnClick(){
+        //Intent intent = new Intent(getApplicationContext(),DashBoardActivity.class);
+        //startActivity(intent);
+    }
+
+    private void mapLocationBtnClick(){
+        //Intent intent = new Intent(getApplicationContext(),DashBoardActivity.class);
+        //startActivity(intent);
+    }
+
+    /*private void doLogin() {
         String name = edtName.getText().toString().trim();
         String mobile = edtPhone.getText().toString().trim();
         if (isValidationSuccess(name,mobile)){
@@ -38,8 +67,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void doLoginTask(String name, String mobile) {
-        Intent intent = new Intent(getApplicationContext(),DashBoardActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(),)
     }
 
     private void displayToast(String toastMsg) {
@@ -49,11 +77,9 @@ public class LoginActivity extends AppCompatActivity {
     private boolean isValidationSuccess(String name, String mobile) {
         boolean isSuccess = true;
 
-        if (name.length() < 3){
-            displayToast(getString(R.string.valid_name));
+        if (name.length() > 3){
             isSuccess = false;
         }else if(!mobile.matches(Helpers.REG_EXP_MOBILE)){
-            displayToast(getString(R.string.valid_mobile));
             isSuccess = false;
         }
         return isSuccess;
@@ -85,4 +111,5 @@ public class LoginActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+*/
 }
