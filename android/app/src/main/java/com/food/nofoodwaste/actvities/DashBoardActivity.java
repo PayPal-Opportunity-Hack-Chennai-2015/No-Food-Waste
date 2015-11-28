@@ -2,7 +2,9 @@ package com.food.nofoodwaste.actvities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,12 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         //initView();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.mipmap.ic_launcher);
+        ab.setDisplayHomeAsUpEnabled(true);
 
         findViewById(R.id.layout_donate_food).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +51,8 @@ public class DashBoardActivity extends AppCompatActivity {
     }
 
     private void donationBtnClick(){
-        //Intent intent = new Intent(getApplicationContext(),DashBoardActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(),EnterDonationDetailsActivity.class);
+        startActivity(intent);
     }
 
     private void volunteerBtnClick(){

@@ -2,8 +2,10 @@ package com.food.nofoodwaste.actvities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +30,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.mipmap.ic_launcher);
+        ab.setDisplayHomeAsUpEnabled(true);
 
         appSharedPreferences = new AppSharedPreferences(getApplicationContext());
 
