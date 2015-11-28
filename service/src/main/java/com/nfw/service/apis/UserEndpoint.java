@@ -2,7 +2,9 @@ package com.nfw.service.apis;
 
 import com.nfw.service.models.User;
 import com.nfw.service.models.UserRequest;
-import lombok.AllArgsConstructor;
+import com.nfw.service.repo.UserDAO;
+import io.dropwizard.hibernate.UnitOfWork;
+import lombok.NonNull;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
@@ -19,20 +21,23 @@ import static javax.ws.rs.core.Response.Status.CREATED;
 import static javax.ws.rs.core.Response.Status.OK;
 
 /**
- * Created by sriram on 28/11/15.
+ * User Endpoint
  */
 @Path("/user")
-@AllArgsConstructor
 public class UserEndpoint {
+
+    @NonNull
+    private UserDAO dao;
 
     @Context
     private HttpServletResponse response;
 
-    private final AtomicLong counter;
 
-    public UserEndpoint() {
-        this.counter = new AtomicLong();
+    public UserEndpoint(UserDAO userDAO) {
+        this.dao = userDAO;
     }
+
+    private final AtomicLong counter = new AtomicLong();
 
     @GET
     @Path("/hello")
@@ -42,15 +47,14 @@ public class UserEndpoint {
 
     @POST
     @Path("create")
+    @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postSignup(UserRequest userRequest) {
+    public User createUser(UserRequest userRequest) {
         User user = new User(counter.incrementAndGet(), userRequest.getUsername(), userRequest.getMobileNumber());
         System.out.println(user);
-//        return Response.ok(user, MediaType.APPLICATION_JSON).build();
-//        return Response.status(CREATED).entity(user).build();
-        return Response.status(CREATED).build();
-//        response.setStatus(CREATED.getStatusCode());
-//        return user;
+        dao.create(user);
+        response.setStatus(CREATED.getStatusCode());
+        return user;
     }
 }
