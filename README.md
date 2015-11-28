@@ -30,3 +30,12 @@ Note: Delivery of food will be offline to the app.
 4. B. Sriram
 5. N. Sriram
 6. S. Ramakrishna
+
+# Merging your branch with upstream
+```
+git remote add upstream git@github.com:PayPal-Opportunity-Hack-Chennai-2015/No-Food-Waste.git
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push origin master
+```
