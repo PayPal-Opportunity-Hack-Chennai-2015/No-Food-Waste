@@ -1,8 +1,10 @@
 package com.nfw.service.main;
 
+import com.nfw.service.apis.DonateFoodEndpoint;
 import com.nfw.service.apis.HelloEndpoint;
 import com.nfw.service.apis.UserEndpoint;
 import com.nfw.service.models.User;
+import com.nfw.service.repo.DonateFoodDAO;
 import com.nfw.service.repo.UserDAO;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -36,10 +38,14 @@ public class NFWApplication extends Application<NFWConfiguration> {
         final NFWHealthCheck healthCheck = new NFWHealthCheck();
         environment.jersey().register(healthCheck);
 
+        // TODO : check the db connection
 //        environment.healthChecks().register("database", new DatabaseHealthCheck(nfwConfiguration.getDatabase()));
 
-        final UserDAO dao = new UserDAO(hibernate.getSessionFactory());
-        environment.jersey().register(new UserEndpoint(dao));
+        final UserDAO userDAO = new UserDAO(hibernate.getSessionFactory());
+        environment.jersey().register(new UserEndpoint(userDAO));
+
+        final DonateFoodDAO donateFoodDAO = new DonateFoodDAO(hibernate.getSessionFactory());
+        environment.jersey().register(new DonateFoodEndpoint(donateFoodDAO));
 
     }
 

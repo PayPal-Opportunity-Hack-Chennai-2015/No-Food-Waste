@@ -37,7 +37,6 @@ public class UserEndpoint {
         this.dao = userDAO;
     }
 
-    private final AtomicLong counter = new AtomicLong();
 
     @GET
     @Path("/hello")
@@ -54,6 +53,9 @@ public class UserEndpoint {
         User user = new User();
         user.setUsername(userRequest.getUsername());
         user.setMobileNumber(userRequest.getMobileNumber());
+        user.setVolunteer(Boolean.valueOf(userRequest.getIsVolunteer()));
+        user.setDeviceId(userRequest.getDeviceId());
+        user.setDeviceToken(userRequest.getDeviceToken());
         System.out.println(user);
         dao.create(user);
         response.setStatus(CREATED.getStatusCode());
