@@ -20,6 +20,11 @@
         <activity android:name=".actvities.DashBoardActivity"
         android:label="@string/home" />
 
+        <activity android:name=".actvities.AvailableDonationsActivity"
+            android:label="Available Donations" />
+        <activity android:name=".actvities.EnterDonationDetailsActivity"
+            android:label="Donation Details" />
+
     </application>
 
 </manifest>
