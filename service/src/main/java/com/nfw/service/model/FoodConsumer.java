@@ -16,37 +16,39 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "nfw_donations")
+@Table(name = "nfw_consumers")
 @NamedQueries({
-        @NamedQuery(name = "donate.findAll", query = "SELECT u from DonateFood u")
+        @NamedQuery(name = "consumer.findAll", query = "SELECT u from FoodConsumer u")
 })
-public class DonateFood {
+public class FoodConsumer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "nfw_donation_id")
+    @Column(name = "consumer_id")
     @JsonProperty
     private long id;
 
     @JsonProperty
-    @Column(name = "nfw_donor_phone_number")
-    private String donorMobile;
+    @Column(name = "consumer_name")
+    private String consumerName;
 
     @JsonProperty
-    @Column(name = "donation_food_type")
-    private String foodType;
+    @Column(name = "consumer_phone_number")
+    private String consumerMobile;
 
     @JsonProperty
-    @Column(name = "donation_quantity")
+    @Column(name = "consumer_quantity")
     private String quantity;
 
     @JsonProperty
-    @Column(name = "donation_address")
+    @Column(name = "consumer_address")
     private String address;
 
     @JsonProperty
@@ -58,6 +60,7 @@ public class DonateFood {
     private String longitude;
 
     @JsonProperty
-    @Column(name = "donation_status")
-    private String donationStatus;
+    @Column(name = "is_active")
+    private boolean isActive;
+
 }

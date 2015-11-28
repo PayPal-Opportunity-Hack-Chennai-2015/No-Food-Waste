@@ -5,12 +5,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DonateFoodRequest {
-    private String donorMobile;
-    private String foodType;
+public class FoodConsumerRequest {
+    private long id;
+    private String consumerName;
+    private String consumerMobile;
     private String quantity;
+    private String address;
     private String latitude;
     private String longitude;
-    private String address;
-    private String donationStatus;
+    private String isActive;
 }
+
+
