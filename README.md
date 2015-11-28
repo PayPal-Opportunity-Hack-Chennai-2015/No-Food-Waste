@@ -39,3 +39,12 @@ git checkout master
 git merge upstream/master
 git push origin master
 ```
+## Trello Board Project Tracker
+https://trello.com/b/Y2wDWe5d/nofoodwaste
+
+## Communication Channels
+### Gitter
+https://gitter.im/ramsrib/No-Food-Waste
+
+### Scrollback
+https://scrollback.io/nofoodwaste
