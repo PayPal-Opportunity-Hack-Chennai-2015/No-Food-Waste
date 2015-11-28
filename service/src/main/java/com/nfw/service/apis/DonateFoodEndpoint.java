@@ -37,6 +37,7 @@ public class DonateFoodEndpoint {
     public DonateFood createUser(DonateFoodRequest donateFoodRequest) {
         DonateFood donateFood = new DonateFood();
         donateFood.setDonorMobile(donateFoodRequest.getDonorMobile());
+        donateFood.setDonationStatus(donateFoodRequest.getDonationStatus());
         donateFood.setFoodType(donateFoodRequest.getFoodType());
         donateFood.setQuantity(donateFoodRequest.getQuantity());
         donateFood.setLatitude(donateFoodRequest.getLatitude());

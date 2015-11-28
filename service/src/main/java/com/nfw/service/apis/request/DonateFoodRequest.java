@@ -12,4 +12,6 @@ public class DonateFoodRequest {
     private String latitude;
     private String longitude;
     private String address;
+    private String donationStatus;
+
 }
