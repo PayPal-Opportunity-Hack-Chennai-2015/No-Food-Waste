@@ -12,6 +12,7 @@ import MapKit
 class DonateViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    var coordinate: CLLocationCoordinate2D?
     
     @IBOutlet weak var addressTextView: UITextView!
 
@@ -23,6 +24,13 @@ class DonateViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
         
+        if let coordinate = coordinate {
+            locSwitch.on = false
+            getPlaceName(coordinate.latitude, longitude: coordinate.longitude)
+        } else {
+            getCurrentLocation()
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -32,11 +40,31 @@ class DonateViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
-        getCurrentLocation()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         navigationItem.title = nil
+    }
+    
+    func getPlaceName(latitude: Double, longitude: Double) {
+        
+        let coordinates = CLLocation(latitude: latitude, longitude: longitude)
+        
+        CLGeocoder().reverseGeocodeLocation(coordinates, completionHandler: {(placemarks, error)->Void in
+            
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + error!.localizedDescription)
+                return
+            }
+            
+            if placemarks!.count > 0 {
+                let pm = placemarks![0]
+                self.displayLocationInfo(pm)
+            } else {
+                print("Problem with the data received from geocoder")
+            }
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,8 +72,8 @@ class DonateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func mapLocation(sender: AnyObject) {
-    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -107,15 +135,22 @@ extension DonateViewController: CLLocationManagerDelegate {
         if locationSwitch.on {
             getCurrentLocation()
         } else {
-            
+            mapLocation()
         }
     }
     
     func getCurrentLocation() {
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+    }
+    
+    func mapLocation() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("MapLocationViewController")
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     

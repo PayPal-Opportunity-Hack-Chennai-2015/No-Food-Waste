@@ -41,5 +41,10 @@
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Request permission to use location service when the apps is in background.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
