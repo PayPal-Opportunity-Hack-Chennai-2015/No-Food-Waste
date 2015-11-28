@@ -29,7 +29,7 @@ public class DonateFood {
     private long id;
 
     @JsonProperty
-    @Column(name = "nfw_donor_user_id")
+    @Column(name = "nfw_donor_phone_number")
     private String donorMobile;
 
     @JsonProperty
