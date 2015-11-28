@@ -1,0 +1,9 @@
+{
+  "consumerName":"somename",
+  "consumerMobile": "9933775657",
+  "isActive":"true",
+  "quantity":"10",
+  "latitude":"102.30",
+  "longitude":"233.dd",
+  "address":"Some text"
+}

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">No Food Waste</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="home">Dashboard</string>
+
+    <string name="accept_as_volunteer">I wolud like to volunteer for delivering food and receive notifications about food donation</string>
+
+    <string name="select_available_donation_message">Please select the location you would like to pick up the donate food from</string>
+
+    <string name="donate_food">Donate Food</string>
+    <string name="volunteer">Volunteer</string>
+    <string name="map_a_location">Map a Location</string>
+
+    <!--<string name="banner_msg">Our goal is to Stop Food Wastage!</string>-->
+    <string name="banner_msg">Feed People! Not Landfills!</string>
+
+    <string name="valid_name">Please enter valid name</string>
+    <string name="valid_mobile">Please enter valid mobile number</string>
+
+
+    <string name="thnxvolunter">This is a conformation message for your volunteering to delevery the food </string>
+    <string name="thnxdonator">your food donation has accepted and we will picking up shartly.\n please find deatils below </string>
+    <string name="txtvolunter_Details">Raviji \n 9500369624</string>
+    <string name="txtDonation_Details">Dinner 8kg 4th street,\n saligram,chennai\n (8 kms from current location)</string>
+    <string name="Delevery_location">Siva nantha ashram \n kattankultuthur \n GST Road ,Chennai</string>
+</resources>

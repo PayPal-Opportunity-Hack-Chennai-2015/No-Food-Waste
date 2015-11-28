@@ -1,6 +1,6 @@
 # Problem Statement
-## Donors
-Prevent food waste by creating an interactive multi-channel system that will allow people with surplus excess foods from
+
+Prevent food waste by creating an interactive multi-channel system that will allow people with surplus excess foods from Weddings , Parties, and other events, to contact 'No Food Waste' to donate food, as well as for hungry individuals and institutions requiring food supplies to request help from 'No Food Waste'
 
 1. Weddings
 2. Parties, &
@@ -33,9 +33,18 @@ Note: Delivery of food will be offline to the app.
 
 # Merging your branch with upstream
 ```
-git remote add upstream git@github.com:PayPal-Opportunity-Hack-Chennai-2015/No-Food-Waste.git
+git remote add upstream git@github.com:ramsrib/No-Food-Waste.git
 git fetch upstream
 git checkout master
 git merge upstream/master
 git push origin master
 ```
+## Trello Board Project Tracker
+https://trello.com/b/Y2wDWe5d/nofoodwaste
+
+## Communication Channels
+### Gitter
+https://gitter.im/ramsrib/No-Food-Waste
+
+### Scrollback
+https://scrollback.io/nofoodwaste

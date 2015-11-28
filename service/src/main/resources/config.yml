@@ -1,0 +1,46 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 7001
+
+  # Logging settings.
+logging:
+  level: INFO
+  loggers:
+    com.nfw.service: DEBUG
+    # Redirects SQL logs to a separate file
+    io.dropwizard.hibernate: DEBUG
+  appenders:
+    - type: console
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /tmp/application.log
+      archivedLogFilenamePattern: /tmp/application-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC
+      maxFileSize: 10MB
+
+database:
+  driverClass: org.postgresql.Driver
+  user: nfw
+  password: nfw
+  url: jdbc:postgresql://localhost/nfw
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.hbm2ddl.auto: validate
+    hibernate.show_sql: true
+    hibernate.format_sql: true
+
+
+  maxWaitForConnection: 1s
+  validationQuery: "SELECT 1"
+  minSize: 8
+  maxSize: 16
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
