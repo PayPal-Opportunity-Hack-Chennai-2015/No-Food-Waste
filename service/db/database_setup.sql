@@ -19,12 +19,12 @@ CREATE SEQUENCE nfw_donation_id_seq;
 
 CREATE TABLE IF NOT EXISTS nfw_donations (
   nfw_donation_id BIGSERIAL NOT NULL,
-  nfw_donor_user_id BIGSERIAL,
+  nfw_donor_phone_number INT,
   donation_food_type VARCHAR(32) NOT NULL UNIQUE,
   donation_quantity INT,
   donation_address VARCHAR(512),
-  lat DECIMAL(9,6),
-  long DECIMAL(9,6),
+  lat VARCHAR(9),
+  long VARCHAR(9),
   donation_status VARCHAR(32),
   PRIMARY KEY(nfw_donation_id)
 );

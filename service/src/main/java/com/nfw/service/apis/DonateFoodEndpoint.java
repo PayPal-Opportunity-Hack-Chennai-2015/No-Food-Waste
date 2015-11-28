@@ -1,10 +1,9 @@
 package com.nfw.service.apis;
 
 
-import com.nfw.service.models.DonateFood;
-import com.nfw.service.models.DonateFoodRequest;
+import com.nfw.service.model.DonateFood;
 import com.nfw.service.repo.DonateFoodDAO;
-import com.nfw.service.repo.UserDAO;
+import com.nfw.service.apis.request.DonateFoodRequest;
 import io.dropwizard.hibernate.UnitOfWork;
 import lombok.NonNull;
 
@@ -20,8 +19,6 @@ import static javax.ws.rs.core.Response.Status.CREATED;
 
 @Path("/donate")
 public class DonateFoodEndpoint {
-
-
     @NonNull
     private DonateFoodDAO dao;
 
@@ -38,15 +35,13 @@ public class DonateFoodEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public DonateFood createUser(DonateFoodRequest donateFoodRequest) {
-
         DonateFood donateFood = new DonateFood();
+        donateFood.setDonorMobile(donateFoodRequest.getDonorMobile());
         donateFood.setFoodType(donateFoodRequest.getFoodType());
         donateFood.setQuantity(donateFoodRequest.getQuantity());
         donateFood.setLatitude(donateFoodRequest.getLatitude());
         donateFood.setLongitude(donateFoodRequest.getLongitude());
         donateFood.setAddress(donateFoodRequest.getAddress());
-
-        System.out.println(donateFood);
         dao.create(donateFood);
         response.setStatus(CREATED.getStatusCode());
         return donateFood;

@@ -1,7 +1,7 @@
 package com.nfw.service.apis;
 
-import com.nfw.service.models.User;
-import com.nfw.service.models.UserRequest;
+import com.nfw.service.apis.request.UserRequest;
+import com.nfw.service.model.User;
 import com.nfw.service.repo.UserDAO;
 import io.dropwizard.hibernate.UnitOfWork;
 import lombok.NonNull;
@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.concurrent.atomic.AtomicLong;
 
 import static javax.ws.rs.core.Response.Status.CREATED;
 import static javax.ws.rs.core.Response.Status.OK;
@@ -25,18 +24,15 @@ import static javax.ws.rs.core.Response.Status.OK;
  */
 @Path("/user")
 public class UserEndpoint {
-
     @NonNull
     private UserDAO dao;
 
     @Context
     private HttpServletResponse response;
 
-
     public UserEndpoint(UserDAO userDAO) {
         this.dao = userDAO;
     }
-
 
     @GET
     @Path("/hello")
