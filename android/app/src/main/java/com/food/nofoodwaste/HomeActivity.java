@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity{
         //layoutTypes = (LinearLayout)findViewById(R.id.layout_types);
         //imgShowTypes = (ImageView)findViewById(R.id.img_show_types);
         //imgHideTypes = (ImageView)findViewById(R.id.img_hide_types);
+        //Rama
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
