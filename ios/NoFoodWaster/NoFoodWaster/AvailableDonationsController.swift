@@ -67,7 +67,7 @@ extension AvailableDonationsController: UITableViewDataSource, UITableViewDelega
         let donate = donates[indexPath.row]
     
         cell.textLabel?.text = donate.address
-        cell.detailTextLabel?.text = "\(8 + indexPath.row)\" Kms from Current Location"
+        cell.detailTextLabel?.text = donate.distance + " in Kms from Current Location"
         
         tableViewStyle(cell)
         
@@ -108,11 +108,15 @@ extension AvailableDonationsController: UITableViewDataSource, UITableViewDelega
     }
 }
 
-extension AvailableDonationsController: DonateDelegate {
+extension AvailableDonationsController: ServiceManagerDelegate {
     func downloadDonateComplete(donate: Donate) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.donates.append(donate)
             self.tableView.reloadData()
         }
+    }
+    
+    func downloadConsumerComplete(consumer: Consumer) {
+        // this method should not be here
     }
 }

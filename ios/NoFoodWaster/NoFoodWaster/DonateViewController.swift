@@ -157,7 +157,7 @@ extension DonateViewController: CLLocationManagerDelegate {
             let administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
             let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
             
-            let address = locality! + "\n" + administrativeArea! +  "\n" + postalCode! + "\n" + country!
+            let address = locality! + ", " + administrativeArea! +  ", " + postalCode! + ", " + country!
             
             addressTextView.text = address
         }
