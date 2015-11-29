@@ -14,9 +14,18 @@ class DonateViewController: UIViewController {
     let locationManager = CLLocationManager()
     var coordinate: CLLocationCoordinate2D?
     
+    var phone:String?
+    var name:String?
+    var volunteer:Bool?
+    var activeField:UITextField?
+    
+    let donationStatus = "open"
+    
     @IBOutlet weak var addressTextView: UITextView!
 
+    @IBOutlet weak var foodSegmentControl: UISegmentedControl!
     @IBOutlet weak var locSwitch: UISwitch!
+    @IBOutlet weak var serves: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +39,10 @@ class DonateViewController: UIViewController {
         } else {
             getCurrentLocation()
         }
+        
+        serves.delegate = self
+        
+        populateDefaults()
         
     }
     
@@ -46,9 +59,19 @@ class DonateViewController: UIViewController {
         navigationItem.title = nil
     }
     
+    func populateDefaults() {
+
+        let userDefault = NSUserDefaults(suiteName: "register")
+        name = userDefault?.objectForKey("name") as? String
+        phone = userDefault?.objectForKey("phone") as? String
+        volunteer = userDefault?.boolForKey("isVolunteer")
+    }
+    
     func getPlaceName(latitude: Double, longitude: Double) {
         
         let coordinates = CLLocation(latitude: latitude, longitude: longitude)
+        
+        coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         CLGeocoder().reverseGeocodeLocation(coordinates, completionHandler: {(placemarks, error)->Void in
             
@@ -77,21 +100,38 @@ class DonateViewController: UIViewController {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= 160
+        if ((activeField?.isKindOfClass(UITextField)) == nil) {
+            self.view.frame.origin.y -= 160
+        }
+
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y -= 160
+        if ((activeField?.isKindOfClass(UITextField)) == nil) {
+            self.view.frame.origin.y += 160
+        }
+        activeField = nil
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self);
     }
-
+    
+    @IBAction func deliver(sender: AnyObject) {
+        
+        let selectedIndex = foodSegmentControl.selectedSegmentIndex
+        let foodType = foodSegmentControl.titleForSegmentAtIndex(selectedIndex)
+        
+        let serviceMgr = ServiceManager()
+        serviceMgr.donateFood(phone!, status: donationStatus, foodType:foodType!, quantity: serves.text!, latitude: (coordinate?.latitude)!, longitude: (coordinate?.longitude)!, address: addressTextView.text)
+    }
 }
 
 extension DonateViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        coordinate = manager.location?.coordinate
+        
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)->Void in
             
             if (error != nil) {
@@ -124,10 +164,6 @@ extension DonateViewController: CLLocationManagerDelegate {
         
     }
     
-    @IBAction func getCurrentLocation(sender: AnyObject) {
- 
-    }
-    
     @IBAction func currentLocation(sender: AnyObject) {
         
         let locationSwitch = sender as! UISwitch
@@ -157,4 +193,13 @@ extension DonateViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error while updating location " + error.localizedDescription)
     }
+}
+
+extension DonateViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        activeField = textField
+        return true
+    }
+
 }

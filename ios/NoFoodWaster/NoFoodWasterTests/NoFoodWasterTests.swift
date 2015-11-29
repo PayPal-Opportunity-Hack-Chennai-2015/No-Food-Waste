@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import NoFoodWaster
 
 class NoFoodWasterTests: XCTestCase {
     
