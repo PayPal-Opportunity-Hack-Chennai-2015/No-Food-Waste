@@ -50,9 +50,9 @@ public class ConsumerEndpoint {
         List<FoodConsumer> donateFoodList = dao.findAll();
         for (FoodConsumer item : donateFoodList) {
             float dist = calculateDistance(Double.valueOf(item.getLatitude()), Double.valueOf(item.getLongitude()), currentLatitude, currentLongitude);
-            DecimalFormat df = new DecimalFormat();
+            DecimalFormat df = new DecimalFormat("#.##");
             df.setMaximumFractionDigits(2);
-            item.setDistance(String.valueOf(dist));
+            item.setDistance(String.valueOf(df.format(dist)));
         }
         return donateFoodList;
     }
