@@ -25,11 +25,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/select_available_donation_message"
+                    android:text="@string/select_available_delivery_message"
                     android:textColor="@color/primary_text"
                     android:layout_margin="10dp"
-                    android:typeface="serif"
                     android:textSize="16sp"
+                    android:typeface="serif"
                     />
                 </RelativeLayout>
 

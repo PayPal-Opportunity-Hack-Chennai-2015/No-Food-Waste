@@ -76,7 +76,7 @@
         android:layout_marginTop="5dp"
         android:textColor="@color/primary_text"
         android:typeface="serif"
-        android:text="Quantity (Kgs)"/>
+        android:text="Number of serves"/>
     <EditText
         android:id="@+id/edt_quantity"
         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
         android:layout_margin="10dp"
         android:typeface="serif"
         android:inputType="number"
-        android:hint="Enter quantity"/>
+        android:hint="Enter count"/>
 
     <TextView
         android:id="@+id/txt_select_location"

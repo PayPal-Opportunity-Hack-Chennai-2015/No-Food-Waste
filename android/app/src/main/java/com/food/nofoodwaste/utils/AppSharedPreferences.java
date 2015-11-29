@@ -39,7 +39,7 @@ public class AppSharedPreferences {
     }
 
     public boolean getBooleanPreferences(String key) {
-        boolean mBoleanPrefs = _sharedPrefs.getBoolean(key, true);
+        boolean mBoleanPrefs = _sharedPrefs.getBoolean(key, false);
         return mBoleanPrefs;
     }
 

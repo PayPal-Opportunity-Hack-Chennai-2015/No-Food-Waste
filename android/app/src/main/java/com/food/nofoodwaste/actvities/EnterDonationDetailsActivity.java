@@ -149,16 +149,16 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
         JSONObject object = new JSONObject();
         try {
             //object.put("consumerName", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_NAME));
-            object.put("donorMobile", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_MOBILE));
             //object.put("isVolunteer", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_IS_VOLUNTEER)));
             //object.put("deviceId", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_DEVICE_ID)));
-            object.put("quantity", quantity);
-            object.put("foodType", foodType);
-            object.put("donationStatus", "open");
-            object.put("latitude", lat);
-            object.put("longitude", lng);
             object.put("address", address);
-            object.put("deviceToken", "TestDeviceToken");
+            object.put("donorMobile", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_MOBILE));
+            object.put("foodType", foodType);
+            object.put("longitude", lng);
+            object.put("quantity", quantity);
+            object.put("latitude", lat);
+            object.put("donationStatus", "open");
+            //object.put("deviceToken", "TestDeviceToken");
             requestParams = object.toString();
             Log.e("Params","--->>> "+requestParams);
             new doSubmitDonationAsyncTask().execute();
@@ -312,6 +312,7 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
             startActivity(intent);
             intent.putExtra(MyConstants.FROM_ACTIVITY,MyConstants.KEY_DONOR);
             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
         }
 
     }
