@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Getter
@@ -21,9 +23,9 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "nfw_users")
-/*@NamedQueries({
-        @NamedQuery(name = "findAll", query = "SELECT u from User u")
-})*/
+@NamedQueries({
+        @NamedQuery(name = "user.findAll", query = "SELECT u from User u")
+})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

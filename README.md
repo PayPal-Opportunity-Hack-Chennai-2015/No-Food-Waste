@@ -33,7 +33,7 @@ Note: Delivery of food will be offline to the app.
 
 # Merging your branch with upstream
 ```
-git remote add upstream git@github.com:PayPal-Opportunity-Hack-Chennai-2015/No-Food-Waste.git
+git remote add upstream git@github.com:ramsrib/No-Food-Waste.git
 git fetch upstream
 git checkout master
 git merge upstream/master

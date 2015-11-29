@@ -11,10 +11,12 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.CREATED;
 import static javax.ws.rs.core.Response.Status.OK;
@@ -23,6 +25,7 @@ import static javax.ws.rs.core.Response.Status.OK;
  * User Endpoint
  */
 @Path("/user")
+@Produces(MediaType.APPLICATION_JSON)
 public class UserEndpoint {
     @NonNull
     private UserDAO dao;
@@ -35,16 +38,29 @@ public class UserEndpoint {
     }
 
     @GET
+    @UnitOfWork
     @Path("/hello")
     public Response helloUser() {
         return Response.status(OK).build();
     }
 
-    @POST
-    @Path("create")
+    @GET
     @UnitOfWork
+    @Path("/{id}")
+    public User id(@PathParam("id") String id) throws Exception {
+        return dao.findById(Long.valueOf(id));
+    }
+
+    @GET
+    @UnitOfWork
+    public List<User> findAll() throws Exception {
+        return dao.findAll();
+    }
+
+    @POST
+    @UnitOfWork
+    @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public User createUser(UserRequest userRequest) {
         User user = new User();
         user.setUsername(userRequest.getUsername());

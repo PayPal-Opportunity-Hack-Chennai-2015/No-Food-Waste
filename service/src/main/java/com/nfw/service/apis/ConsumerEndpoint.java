@@ -1,0 +1,68 @@
+package com.nfw.service.apis;
+
+
+import com.nfw.service.apis.request.FoodConsumerRequest;
+import com.nfw.service.model.FoodConsumer;
+import com.nfw.service.repo.ConsumerDAO;
+import io.dropwizard.hibernate.UnitOfWork;
+import lombok.NonNull;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
+
+import static javax.ws.rs.core.Response.Status.CREATED;
+
+@Path("/consumer")
+@Produces(MediaType.APPLICATION_JSON)
+public class ConsumerEndpoint {
+
+    @NonNull
+    private ConsumerDAO dao;
+
+    @Context
+    private HttpServletResponse response;
+
+    public ConsumerEndpoint(ConsumerDAO consumerDAO) {
+        this.dao = consumerDAO;
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/{id}")
+    public FoodConsumer id(@PathParam("id") String id) throws Exception {
+        return dao.findById(Long.valueOf(id));
+    }
+
+    @GET
+    @UnitOfWork
+    public List<FoodConsumer> findAll() throws Exception {
+        return dao.findAll();
+    }
+
+    @POST
+    @UnitOfWork
+    @Path("create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public FoodConsumer createUser(FoodConsumerRequest donateFoodRequest) {
+        FoodConsumer foodConsumer = new FoodConsumer();
+        foodConsumer.setConsumerMobile(donateFoodRequest.getConsumerMobile());
+        foodConsumer.setConsumerName(donateFoodRequest.getConsumerName());
+        foodConsumer.setActive(Boolean.valueOf(donateFoodRequest.getIsActive()));
+        foodConsumer.setQuantity(donateFoodRequest.getQuantity());
+        foodConsumer.setLatitude(donateFoodRequest.getLatitude());
+        foodConsumer.setLongitude(donateFoodRequest.getLongitude());
+        foodConsumer.setAddress(donateFoodRequest.getAddress());
+        dao.create(foodConsumer);
+        response.setStatus(CREATED.getStatusCode());
+        return foodConsumer;
+    }
+
+}

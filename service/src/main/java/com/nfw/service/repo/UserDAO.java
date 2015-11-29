@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 public class UserDAO extends AbstractDAO<User> {
+
     public UserDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
@@ -20,6 +21,7 @@ public class UserDAO extends AbstractDAO<User> {
     }
 
     public List<User> findAll() {
-        return list(namedQuery("findAll"));
+        return list(namedQuery("user.findAll"));
     }
+
 }

@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS nfw_donations (
   donation_food_type VARCHAR(32) NOT NULL UNIQUE,
   donation_quantity VARCHAR(5),
   donation_address VARCHAR(512),
-  lat VARCHAR(9),
-  long VARCHAR(9),
+  lat VARCHAR(20),
+  long VARCHAR(20),
   donation_status VARCHAR(32),
   PRIMARY KEY(nfw_donation_id)
 );
@@ -33,15 +33,18 @@ ALTER TABLE nfw_donations ALTER COLUMN nfw_donation_id SET DEFAULT NEXTVAL('nfw_
 
 -- Food consumer location creation
 
-CREATE SEQUENCE food_consumer_id_seq;
+CREATE SEQUENCE consumer_id_seq;
 
-CREATE TABLE IF NOT EXISTS food_consumers (
-  food_consumer_id BIGSERIAL NOT NULL,
-  food_consumer_name VARCHAR(255),
-  lat DECIMAL(9,6),
-  long DECIMAL(9,6),
+CREATE TABLE IF NOT EXISTS nfw_consumers (
+  consumer_id BIGSERIAL NOT NULL,
+  consumer_name VARCHAR(255),
+  consumer_phone_number VARCHAR(10),
+  consumer_quantity VARCHAR(5),
+  consumer_address VARCHAR(512),
+  lat VARCHAR(20),
+  long VARCHAR(20),
   is_active BOOLEAN NOT NULL,
-  PRIMARY KEY(food_consumer_id)
+  PRIMARY KEY(consumer_id)
 );
 
-ALTER TABLE food_consumers ALTER COLUMN food_consumer_id SET DEFAULT NEXTVAL('food_consumer_id_seq');
+ALTER TABLE nfw_consumers ALTER COLUMN consumer_id SET DEFAULT NEXTVAL('consumer_id_seq');
