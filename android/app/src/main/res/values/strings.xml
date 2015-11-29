@@ -6,6 +6,10 @@
 
     <string name="home">Dashboard</string>
 
+    <string name="thankyou_donation">Thank you for donation</string>
+
+    <string name="google_api_key">AIzaSyC-yNXRZTkMBzAQ8A_gNfTzi1tTGRYitgM</string>
+
     <string name="accept_as_volunteer">I wolud like to volunteer for delivering food and receive notifications about food donation</string>
 
     <string name="select_available_donation_message">Please select the location you would like to pick up the donate food from</string>
@@ -20,10 +24,16 @@
     <string name="valid_name">Please enter valid name</string>
     <string name="valid_mobile">Please enter valid mobile number</string>
 
+    <string name="unable_to_connect">Unable to get data.Please try again</string>
 
     <string name="thnxvolunter">This is a conformation message for your volunteering to delevery the food </string>
-    <string name="thnxdonator">your food donation has accepted and we will picking up shartly.\n please find deatils below </string>
+    <string name="thnxdonator">Your food donation has been accepted and our volunteer will pick it up shortly.</string>
     <string name="txtvolunter_Details">Raviji \n 9500369624</string>
     <string name="txtDonation_Details">Dinner 8kg 4th street,\n saligram,chennai\n (8 kms from current location)</string>
     <string name="Delevery_location">Siva nantha ashram \n kattankultuthur \n GST Road ,Chennai</string>
+
+    <string name="thankyou_volunteer">Your request to collect the foods from the donor is accepted.Delivery location will be intimated soon.</string>
+
+    <string name="thankyou_map_location">Thank you for sharing the location of needy people.we will verifiy it and update.</string>
+
 </resources>
