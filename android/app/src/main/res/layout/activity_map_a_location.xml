@@ -45,7 +45,9 @@
         android:id="@+id/edt_address"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:typeface="sans"
         android:hint="Enter/Select address of place where food is needed..."/>
 
@@ -56,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:typeface="serif"
-        android:text="Ad Food Needed Location"/>
+        android:text="Submit Details"/>
 
         </LinearLayout>
     </ScrollView>

@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:background="@drawable/view_bg">
                 <TextView
                     android:id="@+id/txt_details"
@@ -27,6 +27,8 @@
                     android:text="@string/donate_food"
                     android:textColor="@color/primary_text"
                     android:textSize="16sp"
+                    android:typeface="serif"
+                    android:padding="5dp"
                     />
                 <TextView
                     android:id="@+id/txt_address"
@@ -35,6 +37,8 @@
                     android:text="@string/donate_food"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp"
+                    android:typeface="serif"
+                    android:padding="5dp"
                     />
                 <TextView
                     android:id="@+id/txt_distance"
@@ -44,6 +48,8 @@
                     android:text="@string/donate_food"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp"
+                    android:typeface="serif"
+                    android:padding="5dp"
                     />
                 </LinearLayout>
 

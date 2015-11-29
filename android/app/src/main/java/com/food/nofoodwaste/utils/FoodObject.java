@@ -1,10 +1,30 @@
 package com.food.nofoodwaste.utils;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by Ram on 11/29/15.
  */
-public class FoodObject {
-    private String lat,lng,userid,address,foodtype,quantity,distance;
+public class FoodObject implements Serializable{
+    private String id,mobile,lat,lng,userid,address,foodtype,quantity,distance;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDistance() {
         return distance;

@@ -59,9 +59,21 @@ public class DonationsListAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final FoodObject foodObject = foodObjects.get(position);
-        ((DonationsViewHolder) holder).txtDetails.setText(foodObject.getQuantity());
-        ((DonationsViewHolder) holder).txtAddress.setText(foodObject.getAddress());
-        ((DonationsViewHolder) holder).txtDistance.setText(foodObject.getDistance());
+
+        String details = foodObject.getFoodtype()+" Kgs, "+foodObject.getQuantity();
+        String address = foodObject.getAddress();
+        String distance = "";
+        if (foodObject.getDistance() == null){
+            distance = "8 kms from current location";
+            ((DonationsViewHolder) holder).txtDistance.setVisibility(View.GONE);
+        }else{
+            distance = foodObject.getDistance()+" kms from current location";
+            ((DonationsViewHolder) holder).txtDistance.setVisibility(View.VISIBLE);
+        }
+        //String distance = foodObject.getDistance()+" kms from current location";
+        ((DonationsViewHolder) holder).txtDetails.setText(details);
+        ((DonationsViewHolder) holder).txtAddress.setText(address);
+        ((DonationsViewHolder) holder).txtDistance.setText(distance);
     }
 
     @Override

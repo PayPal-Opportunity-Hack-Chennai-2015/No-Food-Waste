@@ -115,12 +115,13 @@ public class MapALocationActivity extends AppCompatActivity implements GoogleApi
             object.put("consumerName", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_NAME));
             object.put("consumerMobile", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_MOBILE));
             //object.put("isVolunteer", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_IS_VOLUNTEER)));
-            object.put("deviceId", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_DEVICE_ID)));
             object.put("isActive", "true");
+//            object.put("deviceId", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_DEVICE_ID)));
+            object.put("quantity", "20");
             object.put("latitude", lat);
             object.put("longitude", lng);
             object.put("address", address);
-            object.put("deviceToken", "TestDeviceToken");
+//            object.put("deviceToken", "TestDeviceToken");
             requestParams = object.toString();
             Log.e("Map Request params","--->>> "+requestParams);
             new doSubmitDonationAsyncTask().execute();
@@ -271,6 +272,7 @@ public class MapALocationActivity extends AppCompatActivity implements GoogleApi
             startActivity(intent);
             intent.putExtra(MyConstants.FROM_ACTIVITY,MyConstants.KEY_MAP_LOCATION);
             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
         }
 
     }
