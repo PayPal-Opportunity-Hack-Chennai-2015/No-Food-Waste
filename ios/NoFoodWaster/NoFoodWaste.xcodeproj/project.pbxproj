@@ -23,6 +23,9 @@
 		489003301C0A474800E21C76 /* FoodDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890032F1C0A474800E21C76 /* FoodDeliveryViewController.swift */; };
 		489003321C0A4B7200E21C76 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489003311C0A4B7200E21C76 /* ConfirmationViewController.swift */; };
 		489003341C0A7D9300E21C76 /* Donate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489003331C0A7D9300E21C76 /* Donate.swift */; };
+		489003371C0AE91500E21C76 /* MapDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489003361C0AE91500E21C76 /* MapDeliveryViewController.swift */; };
+		489003391C0AEA6A00E21C76 /* DeliveryConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489003381C0AEA6A00E21C76 /* DeliveryConfirmationViewController.swift */; };
+		4890033B1C0AF51500E21C76 /* Consumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890033A1C0AF51500E21C76 /* Consumer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		4890032F1C0A474800E21C76 /* FoodDeliveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDeliveryViewController.swift; sourceTree = "<group>"; };
 		489003311C0A4B7200E21C76 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		489003331C0A7D9300E21C76 /* Donate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donate.swift; sourceTree = "<group>"; };
+		489003361C0AE91500E21C76 /* MapDeliveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDeliveryViewController.swift; sourceTree = "<group>"; };
+		489003381C0AEA6A00E21C76 /* DeliveryConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryConfirmationViewController.swift; sourceTree = "<group>"; };
+		4890033A1C0AF51500E21C76 /* Consumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consumer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,8 @@
 				4890032D1C0A3F2300E21C76 /* AvailableDonationsController.swift */,
 				4890032F1C0A474800E21C76 /* FoodDeliveryViewController.swift */,
 				489003311C0A4B7200E21C76 /* ConfirmationViewController.swift */,
+				489003361C0AE91500E21C76 /* MapDeliveryViewController.swift */,
+				489003381C0AEA6A00E21C76 /* DeliveryConfirmationViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				489003331C0A7D9300E21C76 /* Donate.swift */,
+				4890033A1C0AF51500E21C76 /* Consumer.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -267,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4890033B1C0AF51500E21C76 /* Consumer.swift in Sources */,
 				489003251C09F3CA00E21C76 /* MapLocationViewController.swift in Sources */,
 				4890031A1C09BD5F00E21C76 /* Theme.swift in Sources */,
 				489002FC1C09B3B800E21C76 /* LoginViewController.swift in Sources */,
@@ -277,6 +287,8 @@
 				4890031F1C09C57600E21C76 /* MainViewController.swift in Sources */,
 				489003301C0A474800E21C76 /* FoodDeliveryViewController.swift in Sources */,
 				4890032E1C0A3F2300E21C76 /* AvailableDonationsController.swift in Sources */,
+				489003371C0AE91500E21C76 /* MapDeliveryViewController.swift in Sources */,
+				489003391C0AEA6A00E21C76 /* DeliveryConfirmationViewController.swift in Sources */,
 				489003211C09C58400E21C76 /* DonateViewController.swift in Sources */,
 				489003231C09CDCC00E21C76 /* ThanksViewController.swift in Sources */,
 			);

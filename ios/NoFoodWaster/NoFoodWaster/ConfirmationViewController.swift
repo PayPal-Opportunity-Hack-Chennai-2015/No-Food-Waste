@@ -31,6 +31,18 @@ class ConfirmationViewController: UIViewController {
         
         applyStyle()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(true)
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.title = ""
+        
+        let barButtonItem = UIBarButtonItem.init(title: "Home", style: .Done, target: self, action: "callHome")
+        
+        self.navigationItem.leftBarButtonItem = barButtonItem
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,5 +68,12 @@ class ConfirmationViewController: UIViewController {
         
         containerView.backgroundColor = backgroundColor
         
+    }
+    
+    func callHome() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
