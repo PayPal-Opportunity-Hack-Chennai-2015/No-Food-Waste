@@ -48,6 +48,7 @@ class LoginViewController: UIViewController {
             
             userDefault?.setValue(phone, forKey: "phone")
             userDefault?.setValue(name, forKey: "name")
+            userDefault?.setBool(volunteer.on, forKey: "isVolunteer")
             
             let serviceMgr = ServiceManager()
             serviceMgr.createUser(name!, phone: phone, isVolunteer: volunteer.on)

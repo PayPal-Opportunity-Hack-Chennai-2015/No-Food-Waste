@@ -271,25 +271,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select the location you would like to deliver the food to, from your nearby locations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUD-2k-phJ">
-                                <rect key="frame" x="135" y="87" width="331" height="68"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="b8b-Cg-yea"/>
-                                    <constraint firstAttribute="width" constant="331" id="d85-dk-2hA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rUu-cf-jkv">
-                                <rect key="frame" x="135" y="252" width="330" height="250"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="330" id="D6X-lQ-KYm"/>
-                                    <constraint firstAttribute="height" constant="250" id="OIH-Ye-fMt"/>
-                                </constraints>
-                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-fT-vzH">
                                 <rect key="frame" x="272" y="547" width="56" height="33"/>
                                 <animations/>
@@ -299,13 +280,32 @@
                                     <segue destination="YG1-zq-EKT" kind="show" id="erX-D3-hq0"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rUu-cf-jkv">
+                                <rect key="frame" x="135" y="282" width="330" height="250"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="D6X-lQ-KYm"/>
+                                    <constraint firstAttribute="height" constant="250" id="OIH-Ye-fMt"/>
+                                </constraints>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select the location you would like to deliver the food to, from your nearby locations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUD-2k-phJ">
+                                <rect key="frame" x="147" y="80" width="306" height="68"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="b8b-Cg-yea"/>
+                                    <constraint firstAttribute="width" constant="306" id="d85-dk-2hA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HFO-fT-vzH" firstAttribute="centerX" secondItem="kRQ-ML-V8j" secondAttribute="centerX" id="7eB-3d-cdq"/>
-                            <constraint firstItem="kUD-2k-phJ" firstAttribute="top" secondItem="IJV-xY-5wT" secondAttribute="bottom" constant="23" id="Jxb-3O-qa4"/>
-                            <constraint firstItem="HFO-fT-vzH" firstAttribute="top" secondItem="rUu-cf-jkv" secondAttribute="bottom" constant="45" id="lSA-6Z-LBu"/>
+                            <constraint firstItem="kUD-2k-phJ" firstAttribute="top" secondItem="IJV-xY-5wT" secondAttribute="bottom" constant="16" id="Jxb-3O-qa4"/>
+                            <constraint firstItem="HFO-fT-vzH" firstAttribute="top" secondItem="rUu-cf-jkv" secondAttribute="bottom" constant="15" id="lSA-6Z-LBu"/>
                             <constraint firstItem="kUD-2k-phJ" firstAttribute="centerX" secondItem="kRQ-ML-V8j" secondAttribute="centerX" id="ozp-2Z-1Cv"/>
                             <constraint firstItem="rUu-cf-jkv" firstAttribute="centerX" secondItem="kRQ-ML-V8j" secondAttribute="centerX" id="s4J-f1-0LK"/>
                             <constraint firstItem="m80-bL-vg1" firstAttribute="top" secondItem="HFO-fT-vzH" secondAttribute="bottom" constant="20" id="x6a-9y-hxQ"/>
@@ -313,6 +313,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="xRC-87-jjQ"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="kUD-2k-phJ" id="49i-Rc-naL"/>
                         <outlet property="mapView" destination="rUu-cf-jkv" id="y42-Aj-geq"/>
                     </connections>
                 </viewController>
@@ -332,82 +333,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dear Rajiv, please confirm your food donations pick up, from the details below" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEp-hc-tiF">
-                                <rect key="frame" x="149" y="82" width="330" height="53"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dear Rajiv, please confirm your food donations pick up, from the details below" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEp-hc-tiF">
+                                <rect key="frame" x="159" y="82" width="282" height="85"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="9Jd-dZ-3SU"/>
+                                    <constraint firstAttribute="width" constant="282" id="CtU-PY-lmr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Donation Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxu-6d-AOf">
-                                <rect key="frame" x="149" y="143" width="116" height="53"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8V-tF-Owx">
-                                <rect key="frame" x="149" y="257" width="116" height="53"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volunteer Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXk-dl-Lhi">
-                                <rect key="frame" x="149" y="372" width="120" height="53"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="donation" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ntr-Bc-zsZ">
-                                <rect key="frame" x="149" y="187" width="240" height="82"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-0A-tuX">
+                                <rect key="frame" x="160" y="164" width="281" height="327"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Donation Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxu-6d-AOf">
+                                        <rect key="frame" x="21" y="-7" width="116" height="53"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="donation" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ntr-Bc-zsZ">
+                                        <rect key="frame" x="21" y="37" width="240" height="82"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8V-tF-Owx">
+                                        <rect key="frame" x="21" y="114" width="116" height="34"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="delivery" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z5v-wN-phl">
+                                        <rect key="frame" x="21" y="146" width="240" height="82"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volunteer Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXk-dl-Lhi">
+                                        <rect key="frame" x="21" y="231" width="120" height="29"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGc-Jk-loG">
+                                        <rect key="frame" x="21" y="262" width="151" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nL-iK-cJ2">
+                                        <rect key="frame" x="21" y="286" width="116" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="delivery" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z5v-wN-phl">
-                                <rect key="frame" x="149" y="306" width="240" height="82"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGc-Jk-loG">
-                                <rect key="frame" x="148" y="428" width="43" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nL-iK-cJ2">
-                                <rect key="frame" x="149" y="457" width="49" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTN-KB-zfn">
-                                <rect key="frame" x="267" y="550" width="66" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Deliver"/>
-                                <connections>
-                                    <action selector="deliver:" destination="YG1-zq-EKT" eventType="touchUpInside" id="rxB-Pn-f0b"/>
-                                </connections>
-                            </button>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="281" id="VTm-nw-3vq"/>
+                                    <constraint firstAttribute="height" constant="327" id="XU4-oM-8oz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IEp-hc-tiF" firstAttribute="top" secondItem="mak-s7-puX" secondAttribute="bottom" constant="18" id="Aip-DZ-RhK"/>
+                            <constraint firstItem="TWl-0A-tuX" firstAttribute="centerX" secondItem="TNA-Rz-x0R" secondAttribute="centerX" id="Nvt-zz-pXq"/>
+                            <constraint firstItem="TWl-0A-tuX" firstAttribute="top" secondItem="IEp-hc-tiF" secondAttribute="bottom" constant="-3" id="aBw-MY-E9K"/>
+                            <constraint firstItem="IEp-hc-tiF" firstAttribute="centerX" secondItem="TNA-Rz-x0R" secondAttribute="centerX" id="pji-si-hIz"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="HXI-xq-6Vc"/>
+                    <navigationItem key="navigationItem" title="Title" id="HXI-xq-6Vc">
+                        <barButtonItem key="rightBarButtonItem" title="Deliver" id="7b4-Po-WVV">
+                            <connections>
+                                <action selector="deliver:" destination="YG1-zq-EKT" id="ykq-2O-yie"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="deliver" destination="zTN-KB-zfn" id="eNu-Fv-gW7"/>
+                        <outlet property="containerView" destination="TWl-0A-tuX" id="113-n2-4Or"/>
+                        <outlet property="deliveryDetails" destination="I8V-tF-Owx" id="IYU-R2-wjY"/>
                         <outlet property="deliveryTextView" destination="z5v-wN-phl" id="zRe-DC-OuB"/>
+                        <outlet property="descriptionLabel" destination="IEp-hc-tiF" id="OfG-wZ-Rxs"/>
+                        <outlet property="donationDetails" destination="nxu-6d-AOf" id="YJO-YY-FOf"/>
                         <outlet property="donationTextView" destination="ntr-Bc-zsZ" id="9Mj-az-Er1"/>
                         <outlet property="nameLabel" destination="tGc-Jk-loG" id="Hh8-E1-YXm"/>
                         <outlet property="phoneLabel" destination="0nL-iK-cJ2" id="26s-ar-QNe"/>
+                        <outlet property="volunteerDetails" destination="WXk-dl-Lhi" id="2Tw-7A-fGP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymP-RS-e51" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -477,11 +500,12 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Donate"/>
                                 <connections>
+                                    <action selector="deliver:" destination="4Sc-dX-zSt" eventType="touchUpInside" id="QGt-uh-XXC"/>
                                     <segue destination="EED-cX-aWa" kind="show" id="GrG-e1-Sd4"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H90-dp-tRT">
-                                <rect key="frame" x="135" y="72" width="329" height="367"/>
+                                <rect key="frame" x="136" y="72" width="329" height="367"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No of Serves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-UJ-wMX">
                                         <rect key="frame" x="42" y="69" width="89" height="21"/>
@@ -517,7 +541,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iVB-lv-7E4">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iVB-lv-7E4">
                                         <rect key="frame" x="58" y="21" width="213" height="29"/>
                                         <animations/>
                                         <segments>
@@ -554,7 +578,9 @@
                     <navigationItem key="navigationItem" title="Title" id="dGV-0D-t0e"/>
                     <connections>
                         <outlet property="addressTextView" destination="9i2-VH-TFW" id="5Eq-ce-bHr"/>
+                        <outlet property="foodSegmentControl" destination="iVB-lv-7E4" id="Wdt-BE-QGF"/>
                         <outlet property="locSwitch" destination="pPY-Q0-nNP" id="fux-Su-lSq"/>
+                        <outlet property="serves" destination="3js-no-wUL" id="8te-CU-1Ry"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEj-sS-dE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -580,14 +606,7 @@
                                         <rect key="frame" x="94" y="203" width="125" height="125"/>
                                         <animations/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thanks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irh-E1-jPw">
-                                        <rect key="frame" x="20" y="139" width="58" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You donation will feed 2 Adults and 1 child.We will confirm back to you on the pickup time." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNh-1g-6fA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We will confirm back to you on the pickup time." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNh-1g-6fA">
                                         <rect key="frame" x="20" y="49" width="273" height="64"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>

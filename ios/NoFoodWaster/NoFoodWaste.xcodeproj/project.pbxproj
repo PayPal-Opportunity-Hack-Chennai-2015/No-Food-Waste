@@ -22,6 +22,7 @@
 		4890032E1C0A3F2300E21C76 /* AvailableDonationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890032D1C0A3F2300E21C76 /* AvailableDonationsController.swift */; };
 		489003301C0A474800E21C76 /* FoodDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890032F1C0A474800E21C76 /* FoodDeliveryViewController.swift */; };
 		489003321C0A4B7200E21C76 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489003311C0A4B7200E21C76 /* ConfirmationViewController.swift */; };
+		489003341C0A7D9300E21C76 /* Donate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489003331C0A7D9300E21C76 /* Donate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		4890032D1C0A3F2300E21C76 /* AvailableDonationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableDonationsController.swift; sourceTree = "<group>"; };
 		4890032F1C0A474800E21C76 /* FoodDeliveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDeliveryViewController.swift; sourceTree = "<group>"; };
 		489003311C0A4B7200E21C76 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		489003331C0A7D9300E21C76 /* Donate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				4890031B1C09BD6E00E21C76 /* app */,
+				489003351C0A7E3A00E21C76 /* model */,
 				4890031C1C09BD7200E21C76 /* controller */,
 				4890032A1C0A225500E21C76 /* service */,
 				4890031D1C09BDB100E21C76 /* resources */,
@@ -153,6 +156,14 @@
 				4890032B1C0A226C00E21C76 /* ServiceManager.swift */,
 			);
 			name = service;
+			sourceTree = "<group>";
+		};
+		489003351C0A7E3A00E21C76 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				489003331C0A7D9300E21C76 /* Donate.swift */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 				4890032C1C0A226C00E21C76 /* ServiceManager.swift in Sources */,
 				489003321C0A4B7200E21C76 /* ConfirmationViewController.swift in Sources */,
 				489002FA1C09B3B800E21C76 /* AppDelegate.swift in Sources */,
+				489003341C0A7D9300E21C76 /* Donate.swift in Sources */,
 				4890031F1C09C57600E21C76 /* MainViewController.swift in Sources */,
 				489003301C0A474800E21C76 /* FoodDeliveryViewController.swift in Sources */,
 				4890032E1C0A3F2300E21C76 /* AvailableDonationsController.swift in Sources */,
