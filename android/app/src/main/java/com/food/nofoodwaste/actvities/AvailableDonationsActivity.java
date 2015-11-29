@@ -153,13 +153,26 @@ public class AvailableDonationsActivity extends AppCompatActivity {
             for (int i = 0;i < jsonArray.length() ;i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 FoodObject foodObject = new FoodObject();
-                foodObject.setId(jsonObject.getString("id"));
-                foodObject.setMobile(jsonObject.getString("donorMobile"));
+                if (!jsonObject.isNull("donorMobile"))
+                    foodObject.setMobile(jsonObject.getString("donorMobile"));
+                //foodObject.setId(jsonObject.getString("id"));
+                if (!jsonObject.isNull("foodType"))
                 foodObject.setFoodtype(jsonObject.getString("foodType"));
+
+                if (!jsonObject.isNull("quantity"))
                 foodObject.setQuantity(jsonObject.getString("quantity"));
+
+                if (!jsonObject.isNull("address"))
                 foodObject.setAddress(jsonObject.getString("address"));
+
+                if (!jsonObject.isNull("latitude"))
                 foodObject.setLat(jsonObject.getString("latitude"));
+
+                if (!jsonObject.isNull("longitude"))
                 foodObject.setLng(jsonObject.getString("longitude"));
+
+                if (!jsonObject.isNull("distance"))
+                foodObject.setDistance(jsonObject.getString("distance"));
                 //foodObject.sets(jsonObject.getString("donationStatus"));
                 foodObjects.add(foodObject);
             }

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.food.nofoodwaste.R;
+import com.food.nofoodwaste.adapters.DeliveryListAdapter;
 import com.food.nofoodwaste.adapters.DonationsListAdapter;
 import com.food.nofoodwaste.utils.AlertMagnaticInterface;
 import com.food.nofoodwaste.utils.FoodObject;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 public class AvailableDeliveryPlacesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private DonationsListAdapter donationsListAdapter;
+    private DeliveryListAdapter deliveryListAdapter;
     private ArrayList<FoodObject> foodObjects;
     private OnItemClickListener onItemClickListener;
     private FoodObject donorFoodObj;
@@ -96,9 +97,9 @@ public class AvailableDeliveryPlacesActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        donationsListAdapter = new DonationsListAdapter(getApplicationContext(),foodObjects);
-        donationsListAdapter.setOnItemClickListener(onItemClickListener);
-        recyclerView.setAdapter(donationsListAdapter);
+        deliveryListAdapter = new DeliveryListAdapter(getApplicationContext(),foodObjects);
+        deliveryListAdapter.setOnItemClickListener(onItemClickListener);
+        recyclerView.setAdapter(deliveryListAdapter);
 
         loadLocations();
 
@@ -184,13 +185,28 @@ public class AvailableDeliveryPlacesActivity extends AppCompatActivity {
             for (int i = 0;i < jsonArray.length() ;i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 FoodObject foodObject = new FoodObject();
-                foodObject.setId(jsonObject.getString("id"));
-                foodObject.setMobile(jsonObject.getString("donorMobile"));
-                foodObject.setFoodtype(jsonObject.getString("foodType"));
+               // foodObject.setId(jsonObject.getString("id"));
+
+                if (!jsonObject.isNull("consumerName"))
+                    foodObject.setId(jsonObject.getString("consumerName"));
+
+                if (!jsonObject.isNull("consumerMobile"))
+                foodObject.setMobile(jsonObject.getString("consumerMobile"));
+               // foodObject.setFoodtype(jsonObject.getString("foodType"));
+                if (!jsonObject.isNull("quantity"))
                 foodObject.setQuantity(jsonObject.getString("quantity"));
+
+                if (!jsonObject.isNull("address"))
                 foodObject.setAddress(jsonObject.getString("address"));
+
+                if (!jsonObject.isNull("latitude"))
                 foodObject.setLat(jsonObject.getString("latitude"));
+
+                if (!jsonObject.isNull("longitude"))
                 foodObject.setLng(jsonObject.getString("longitude"));
+
+                if (!jsonObject.isNull("distance"))
+                foodObject.setDistance(jsonObject.getString("distance"));
                 //foodObject.sets(jsonObject.getString("donationStatus"));
                 foodObjects.add(foodObject);
             }
@@ -199,9 +215,10 @@ public class AvailableDeliveryPlacesActivity extends AppCompatActivity {
 
     private void loadAdapter() {
         if (foodObjects.size() > 0) {
-            donationsListAdapter = new DonationsListAdapter(getApplicationContext(), foodObjects);
-            donationsListAdapter.setOnItemClickListener(onItemClickListener);
-            recyclerView.setAdapter(donationsListAdapter);
+
+            deliveryListAdapter = new DeliveryListAdapter(getApplicationContext(), foodObjects);
+            deliveryListAdapter.setOnItemClickListener(onItemClickListener);
+            recyclerView.setAdapter(deliveryListAdapter);
             //donationsListAdapter.setOnItemClickListener(onItemClickListener);
         }
     }
