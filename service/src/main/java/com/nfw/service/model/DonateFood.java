@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Getter
 @Setter
@@ -60,4 +61,8 @@ public class DonateFood {
     @JsonProperty
     @Column(name = "donation_status")
     private String donationStatus;
+
+    @JsonProperty
+    @Transient
+    private String distance;
 }
