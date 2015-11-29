@@ -47,6 +47,10 @@
             android:label="Available Donations" />
         <activity android:name=".actvities.EnterDonationDetailsActivity"
             android:label="Donation Details" />
+        <activity android:name=".actvities.MapALocationActivity"
+            android:label="Map Food Delivery" />
+        <activity android:name=".actvities.ThankYouActivity"
+            android:label="Thank You" />
 
     </application>
 

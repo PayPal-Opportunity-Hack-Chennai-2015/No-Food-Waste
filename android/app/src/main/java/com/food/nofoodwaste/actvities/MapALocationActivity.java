@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,14 +33,13 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class EnterDonationDetailsActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
+public class MapALocationActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
         GoogleApiClient.ConnectionCallbacks{
 
     private GoogleApiClient mGoogleApiClient;
     private int PLACE_PICKER_REQUEST = 1;
-    private RadioButton radioBreakfast,radioLunch,radioDinner;
-    private EditText edtQuantity,edtAddress;
-    private String foodType = "dinner",quantity = "",address = "",lat = "",lng = "",userid= "";
+    private EditText edtAddress;
+    private String address = "",lat = "",lng = "",userid= "";
     //private HashMap<String ,String> postParams;
     private String requestParams;
     AppSharedPreferences appSharedPreferences;
@@ -49,7 +47,7 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donations_details_entry);
+        setContentView(R.layout.activity_map_a_location);
         //initView();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -58,11 +56,6 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
         appSharedPreferences = new AppSharedPreferences(getApplicationContext());
         userid = appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_ID);
 
-        radioBreakfast = (RadioButton)findViewById(R.id.radio_breakfast);
-        radioLunch = (RadioButton)findViewById(R.id.radio_lunch);
-        radioDinner = (RadioButton)findViewById(R.id.radio_dinner);
-
-        edtQuantity = (EditText)findViewById(R.id.edt_quantity);
         edtAddress = (EditText)findViewById(R.id.edt_address);
 
         mGoogleApiClient = new GoogleApiClient
@@ -92,42 +85,15 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
             }
         });
 
-        radioBreakfast.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    foodType = "breakfast";
-                }
-            }
-        });
-        radioLunch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    foodType = "lunch";
-                }
-            }
-        });
-        radioDinner.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    foodType = "dinner";
-                }
-            }
-        });
-
-        findViewById(R.id.btn_donate).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_map_location).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 submitDonation();
             }
         });
-
     }
 
     private void submitDonation() {
-        quantity = edtQuantity.getText().toString().trim();
         address = edtAddress.getText().toString().trim();
 
         if (isValidationSuccess()){
@@ -136,31 +102,27 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
     }
 
     private void doSubmitDonationTask() {
-        /*postParams = new HashMap<>();
+/*
+        postParams = new HashMap<>();
         postParams.put("userid",userid);
-        postParams.put("foodtype",foodType);
-        postParams.put("quantity",quantity);
         postParams.put("latitude",lat);
         postParams.put("longitude",lng);
-        postParams.put("address", address);*/
-        /*{ "donorMobile": "9944775657", "donationStatus": "open",
-                "foodType":"lunch", "quantity":"10",
-                "latitude":"102.30", "longitude":"233.dd", "address":"Some text" }*/
+        postParams.put("address", address);
+*/
+
         JSONObject object = new JSONObject();
         try {
-            //object.put("consumerName", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_NAME));
-            object.put("donorMobile", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_MOBILE));
+            object.put("consumerName", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_NAME));
+            object.put("consumerMobile", appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_MOBILE));
             //object.put("isVolunteer", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_IS_VOLUNTEER)));
-            //object.put("deviceId", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_DEVICE_ID)));
-            object.put("quantity", quantity);
-            object.put("foodType", foodType);
-            object.put("donationStatus", "open");
+            object.put("deviceId", String.valueOf(appSharedPreferences.getStringPreferences(MyConstants.PREF_KEY_DEVICE_ID)));
+            object.put("isActive", "true");
             object.put("latitude", lat);
             object.put("longitude", lng);
             object.put("address", address);
             object.put("deviceToken", "TestDeviceToken");
             requestParams = object.toString();
-            Log.e("Params","--->>> "+requestParams);
+            Log.e("Map Request params","--->>> "+requestParams);
             new doSubmitDonationAsyncTask().execute();
         } catch (Exception ex) {
             displayToast(getString(R.string.unable_to_connect));
@@ -242,10 +204,7 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
 
     private boolean isValidationSuccess(){
         boolean isSuccess = true;
-        if (quantity.equals("")){
-            displayToast("Please enter the quantity");
-            isSuccess = false;
-        }else if (address.equals("") || address.length() < 5){
+        if (address.equals("") || address.length() < 5){
             displayToast("Please enter the correct address");
             isSuccess = false;
         }else if (lat.equals("") || lng.equals("")){
@@ -269,7 +228,7 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(EnterDonationDetailsActivity.this);
+            pDialog = new ProgressDialog(MapALocationActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -284,11 +243,11 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
 
             // Making a request to url and getting response
             //String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
-            String sUrl = MyConstants.URL_ROOT+"donate/create";
+            String sUrl = MyConstants.URL_ROOT+"consumer/create";
 
             String jsonStr = serviceHandler.performPostCall(sUrl, requestParams);
 
-            Log.e("Response: ", "--->>> " + jsonStr);
+            Log.e("Map Response: ", "--->>> " + jsonStr);
 
             if (jsonStr != null) try {
                 JSONObject jsonObj = new JSONObject(jsonStr);
@@ -310,7 +269,7 @@ public class EnterDonationDetailsActivity extends AppCompatActivity implements G
                 pDialog.dismiss();
             Intent intent =new Intent(getApplicationContext(),ThankYouActivity.class);
             startActivity(intent);
-            intent.putExtra(MyConstants.FROM_ACTIVITY,MyConstants.KEY_DONOR);
+            intent.putExtra(MyConstants.FROM_ACTIVITY,MyConstants.KEY_MAP_LOCATION);
             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         }
 
