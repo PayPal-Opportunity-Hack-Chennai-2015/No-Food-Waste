@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Getter
@@ -62,5 +63,9 @@ public class FoodConsumer {
     @JsonProperty
     @Column(name = "is_active")
     private boolean isActive;
+
+    @JsonProperty
+    @Transient
+    private String distance;
 
 }

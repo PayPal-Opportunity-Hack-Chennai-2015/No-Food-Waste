@@ -18,6 +18,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.CREATED;
@@ -46,19 +47,21 @@ public class DonateFoodEndpoint {
     @GET
     @UnitOfWork
     public List<DonateFood> findAll() throws Exception {
-        return dao.findAll();
+        return findWithDistance();
     }
 
     @GET
-    @UnitOfWork
     @Path("distance")
+    @UnitOfWork
     public List<DonateFood> findWithDistance() throws Exception {
         double currentLatitude =  12.9091366;
         double currentLongitude =  80.22688240000002;
         List<DonateFood> donateFoodList = dao.findAll();
         for (DonateFood item : donateFoodList) {
             float dist = calculateDistance(Double.valueOf(item.getLatitude()), Double.valueOf(item.getLongitude()), currentLatitude, currentLongitude);
-            item.setDistance(String.valueOf(dist));
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            item.setDistance(String.valueOf(df.format(dist)));
         }
         return donateFoodList;
     }
