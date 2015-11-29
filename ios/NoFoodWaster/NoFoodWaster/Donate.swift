@@ -15,4 +15,5 @@ struct Donate {
     var latitude: String
     var longitude: String
     var status: String
+    var distance: String
 }

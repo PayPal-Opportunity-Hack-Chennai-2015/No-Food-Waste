@@ -15,9 +15,22 @@ class ThanksViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(true)
         
-        navigationItem.title = ""
+        self.navigationItem.setHidesBackButton(true, animated: false)
+          navigationItem.title = ""
+        
+        let barButtonItem = UIBarButtonItem.init(title: "Home", style: .Done, target: self, action: "callHome")
+        
+        self.navigationItem.leftBarButtonItem = barButtonItem
+    }
+    
+    func callHome() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

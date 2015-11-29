@@ -15,12 +15,18 @@ class FoodDeliveryViewController: UIViewController {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var consumers = [Consumer]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "Food Delivery Places"
         
         applyStyle()
+        let serviceMgr = ServiceManager()
+        serviceMgr.delegate = self
+        
+        serviceMgr.getConsumerList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,5 +37,18 @@ class FoodDeliveryViewController: UIViewController {
     func applyStyle() {
         descriptionLabel.backgroundColor = backgroundColor
         view.backgroundColor = backgroundColor
+    }
+}
+
+extension FoodDeliveryViewController: ServiceManagerDelegate {
+    func downloadDonateComplete(donate: Donate) {
+        // this should not be here
+    }
+    
+    func downloadConsumerComplete(consumer: Consumer) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.consumers.append(consumer)
+            //mapView.addAnnotations(<#T##annotations: [MKAnnotation]##[MKAnnotation]#>)
+        }
     }
 }

@@ -33,6 +33,9 @@ The above script will start the service on port 8080. It can be stopped at any p
 ### get donate-food list
 `curl -v -X GET 'http://localhost:8080/donate'`
 
+### get donate-food list with distance
+`curl -v -X GET 'http://localhost:8080/donate/distance'
+
 ### update donate-food status
 `curl -v -X PUT 'http://localhost:8080/donate/updateStatus' --data '@donate-update-status.json' -H "Content-Type: application/json"`
 
